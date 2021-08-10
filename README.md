@@ -87,7 +87,10 @@ data.set('foo1/foo2/foo3/foo5/foo6/foo7/foo8/', 'bar1')
 data.get('foo1/foo2/foo3/foo5/foo6/foo7/foo8/')
 #result: bar1
 ```
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+Please make sure to update tests as appropriate.
 
-
-
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
