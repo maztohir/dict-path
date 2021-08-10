@@ -43,3 +43,9 @@ def test_set_with_get():
 def test_set_with_get1():
     data['foo1']['foo2']['foo3']['foo5'] = 'bar1'
     assert data.get('foo1/foo2/foo3/foo5') == 'bar1'
+
+def test_equalness_with_normal_dict():
+    normal_dict = {'foo1':{'foo2':{'foo3':{'foo4':'bar'}}}}
+    dic_path = DictPath(normal_dict)
+    assert normal_dict == dic_path
+    assert dic_path.dict is normal_dict
