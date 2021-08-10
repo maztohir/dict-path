@@ -106,7 +106,7 @@ class DictPath(UserDict):
 	def __setitem__(self, path, value):
 		""" Subscript for <DictPath>.get() and <DictPath>.apply_at_path() """
 		path = "/".join(list(path)) if isinstance(path, tuple) else path
-		self.set_path(path, value=value)
+		self.set(path, value=value)
 
 def extract_dict(dictionary, path):
     path = path[1:] if path.startswith('/') else path
