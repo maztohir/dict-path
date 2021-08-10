@@ -2,6 +2,8 @@
 Extended dict for Python. 
 Make easy to extract complicated nested dict.
 
+![repo-size](https://img.shields.io/github/repo-size/maztohir/dict-path)
+![license](https://img.shields.io/github/license/maztohir/dict-path)
 
 ## Installation
 ```bash
