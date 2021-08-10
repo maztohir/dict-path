@@ -29,9 +29,10 @@ if foo1:
 test_dict = {'foo1':{'foo2':{'foo3':{'foo4':'bar'}}}}
 data = DictPath(test_dict)
 data.get('foo1/foo2/foo3/foo4') #result: bar
+```
 
-
-# set value with easy
+##### Set value with easy
+```
 data.set('foo1/foo2/foo3/foo5', 'bar1')
 data.get('foo1/foo2/foo3/foo5') #result: bar1
 ```
