@@ -1,4 +1,7 @@
+from __future__ import annotations
 from collections import UserDict
+from typing import Union, Any
+
 import copy
 import json
 
@@ -79,7 +82,7 @@ class DictPath(UserDict):
 			If a path does not exist, it will be created.
 			Empty path will do nothing.
 		"""
-  		path = self.clean_path(path)
+		path = self.clean_path(path)
 		current = self.data
 		last_path_attr = path.pop()
 		for attr in path:
