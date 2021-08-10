@@ -74,7 +74,7 @@ from dict_path import extract_dict, inject_dict
 
 test_dict = {'foo1':{'foo2':{'foo3':{'foo4':'bar'}}}}
 data = DictPath(test_dict)
-data.get('foo1/foo2/foo3/foo4')
+data.get('foo1/foo2/foo3/foo4/foo6')
 #result: None
 ```
 #### Set up unknown path will create an actual dict
