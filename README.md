@@ -32,7 +32,7 @@ data.get('foo1/foo2/foo3/foo4') #result: bar
 ```
 
 ##### Set value with easy
-```
+```python
 data.set('foo1/foo2/foo3/foo5', 'bar1')
 data.get('foo1/foo2/foo3/foo5') #result: bar1
 ```
