@@ -35,11 +35,11 @@ jobs:
       run: |
         pytest test*
     - name: Build dist
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
       run: |
         python setup.py sdist bdist_wheel
     - name: Publish to PyPI
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         user: __token__
