@@ -66,16 +66,14 @@ class DictPath(UserDict):
 			return self
 		current = self.data
 		for attr in path:
+			if current is None:
+				return None
+		
 			if isinstance(current, dict):
-				print(current, attr)
 				current = current.get(attr)
 			elif isinstance(current, list):
-				print(current, attr)
 				current = current[int(attr)]
-			elif current is None:
-				return None
-			else:
-				raise Exception(f"Your path is not a path of dicts (value at key {attr} is of type {type(current)})")
+
 		if isinstance(current, dict):
 			return DictPath(current)
 		return current
