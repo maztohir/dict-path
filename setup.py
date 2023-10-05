@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="dict-path",
-    version="1.0.1",
+    version="1.0.2",
     author="Muhamad Tohir",
     author_email="maztohir@gmail.com",
     description="Python library to work with complicated nested dict",
