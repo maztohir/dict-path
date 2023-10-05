@@ -66,11 +66,16 @@ class DictPath(UserDict):
 			return self
 		current = self.data
 		for attr in path:
-			if not isinstance(current, dict):
-				raise Exception(f"Your path is not a path of dicts (value at key {attr} is of type {type(current)})")
-			if attr not in current:
+			if isinstance(current, dict):
+				print(current, attr)
+				current = current.get(attr)
+			elif isinstance(current, list):
+				print(current, attr)
+				current = current[int(attr)]
+			elif current is None:
 				return None
-			current = current[attr]
+			else:
+				raise Exception(f"Your path is not a path of dicts (value at key {attr} is of type {type(current)})")
 		if isinstance(current, dict):
 			return DictPath(current)
 		return current
@@ -109,27 +114,30 @@ class DictPath(UserDict):
 		self.set(path, value=value)
 
 def extract_dict(dictionary, path):
-    path = path[1:] if path.startswith('/') else path
-    paths = path.split('/')
-    active_dict = dictionary
-    for p in paths:
-        if active_dict.get(p) != None:
-            active_dict = active_dict.get(p)
-        else:
-            return None
-    return active_dict
+	path = path[1:] if path.startswith('/') else path
+	paths = path.split('/')
+	active_dict = dictionary
+	for p in paths:
+		if active_dict is None:
+			return None
+		if isinstance(active_dict, dict):
+			active_dict = active_dict.get(p)
+		elif isinstance(active_dict, list):
+			active_dict = active_dict[int(p)]
+	return active_dict
 
 def inject_dict(dictionary, path, value):
-    path = path[1:] if path.startswith('/') else path
-    paths = path.split('/')
-    path_len = len(paths)
-    _active_dict = dictionary
-    for i, p in enumerate(paths):
-        if i == path_len - 1:
-            _active_dict[p] = value
-        else:
-            if _active_dict.get(p) == None:
-                _active_dict[p] = {}
-            _active_dict = _active_dict.get(p)
-    return dictionary
-    
+	path = path[1:] if path.startswith('/') else path
+	paths = path.split('/')
+	path_len = len(paths)
+	_active_dict = dictionary
+	for i, p in enumerate(paths):
+
+		if i == path_len - 1:
+			_active_dict[p] = value
+			continue
+
+		if _active_dict.get(p) == None:
+			_active_dict[p] = {}
+		_active_dict = _active_dict.get(p)
+	return dictionary

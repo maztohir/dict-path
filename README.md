@@ -73,7 +73,7 @@ joe = DictPath(user, deepcopy=True)
 
 #### Invalid path will return None
 ```python
-from dict_path import extract_dict, inject_dict
+from dict_path import DictPath
 
 test_dict = {'foo1':{'foo2':{'foo3':{'foo4':'bar'}}}}
 data = DictPath(test_dict)
@@ -82,7 +82,7 @@ data.get('foo1/foo2/foo3/foo4/foo6')
 ```
 #### Set up unknown path will create an actual dict
 ```python
-from dict_path import extract_dict, inject_dict
+from dict_path import DictPath
 
 test_dict = {'foo1':{'foo2':{'foo3':{'foo4':'bar'}}}}
 data = DictPath(test_dict)
@@ -90,6 +90,21 @@ data.set('foo1/foo2/foo3/foo5/foo6/foo7/foo8/', 'bar1')
 data.get('foo1/foo2/foo3/foo5/foo6/foo7/foo8/')
 #result: bar1
 ```
+
+#### Its also working with array
+Note: For now its only working with get or extract_dict.
+```python
+from dict_path import extract_dict, DictPath
+
+test_dict = {'foo1':{'foo2':[{'foo3':'bar'},{'foo4':[[{'foo5': 'bar'}]]}]}}
+data = DictPath(test_dict)
+data.get('foo1/foo2/1/foo4/0/0/foo5/')
+#result: bar
+
+extract_dict(test_dict, 'foo1/foo2/1/foo4/0/0/foo5/')
+```
+
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
